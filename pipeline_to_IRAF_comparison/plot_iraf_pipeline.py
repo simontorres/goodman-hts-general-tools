@@ -33,7 +33,7 @@ print(wav_min, wav_max)
 plt.xlim((wav_min, wav_max))
 
 plt.axvline(6562.8, color='r', label='H-alpha 6562.8A')
-plt.plot(iraf_w, iraf_oi, label='IRAF Solved', color='k', alpha=.5)
+plt.plot(iraf_w, iraf_oi, label='IRAF Solved + Offset', color='k', alpha=.5)
 plt.plot(pipe_w, pipe_i, label='Goodman Pipeline', color='k')
 plt.title('Pipeline V/S IRAF comparison\nCVSO-114\n400M2 + GG455')
 plt.xlabel('Wavelength (Angstrom)')
