@@ -3,10 +3,10 @@ import astropy.units as u
 from ccdproc import CCDData
 from goodman_spec.wsbuilder import ReadWavelengthSolution
 
-offset = 6000.
+offset = 8000.
 
 iraf_file = '/data/simon/development/soar/goodman-hts-general-tools/pipeline_to_IRAF_comparison/files/CVSO-114SW_400M2_comb_1d_wl.fits'
-pipe_file = '/data/simon/development/soar/goodman-hts-general-tools/pipeline_to_IRAF_comparison/files/auto_gcfzsto_0074.cvso114_400M2_GG455_1.fits'
+pipe_file = '/data/simon/development/soar/goodman-hts-general-tools/pipeline_to_IRAF_comparison/files/gcfzsto_0074.cvso114_400M2_GG455_1.fits'
 
 iraf_data = CCDData.read(iraf_file, unit=u.adu)
 
@@ -30,6 +30,8 @@ wav_min = min([iraf_w[0], pipe_w[0]])
 wav_max = max([iraf_w[-1], pipe_w[-1]])
 print(wav_min, wav_max)
 
+plt.figure(figsize=(10, 7))
+
 plt.xlim((wav_min, wav_max))
 
 plt.axvline(6562.8, color='r', label='H-alpha 6562.8A')
@@ -41,5 +43,5 @@ plt.ylabel('Intensity (ADU)')
 plt.legend(loc='best')
 plt.tight_layout()
 
-plt.savefig('/data/simon/development/soar/goodman-hts-general-tools/pipeline_to_IRAF_comparison/files/pipe_iraf.png', dpi=300)
+plt.savefig('/data/simon/development/soar/goodman-hts-general-tools/pipeline_to_IRAF_comparison/files/pipe_iraf_corrected.png', dpi=300)
 plt.show()
